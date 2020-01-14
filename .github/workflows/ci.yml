@@ -3,7 +3,7 @@ name: continuous-integration-foo
 on:
     pull_request:
         branches:
-            = master
+            - master
 
 jobs:
     build-and-test:
