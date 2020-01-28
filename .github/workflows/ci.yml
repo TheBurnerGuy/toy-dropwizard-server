@@ -29,18 +29,18 @@ jobs:
         steps:
             - uses: actions/checkout@v1
 
+            - uses: actions/setup-python@v1
+                with:
+                  python-version: '3.8.1' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+
             - name: Build the docker-compose stack
               run: docker-compose up -d --build
-
-            - uses: actions/setup-python@v1
-              with:
-                python-version: '3.8.0' # Version range or exact version of a Python version to use, using SemVer's version range syntax
 
             - name: Install requests and pytest
               run: |
                   python3 -m pip install --upgrade pip
-                  pip3 install -U requests
-                  pip3 install -U pytest
+                  python3 -m pip install requests
+                  python3 -m pip install pytest
 
             - name: Run pytest
               run: pytest
