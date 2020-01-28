@@ -32,11 +32,15 @@ jobs:
             - name: Build the docker-compose stack
               run: docker-compose up -d --build
 
+            - uses: actions/setup-python@v1
+              with:
+                python-version: '3.8.0' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+
             - name: Install requests and pytest
               run: |
-                  python -m pip install --upgrade pip
-                  pip install -U requests
-                  pip install -U pytest
+                  python3 -m pip install --upgrade pip
+                  pip3 install -U requests
+                  pip3 install -U pytest
 
             - name: Run pytest
               run: pytest
